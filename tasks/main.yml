@@ -2,6 +2,16 @@
 
 ---
 
+# gpg seems to be missing on official docker images and as a result apt_key seems to fail
+- name: 'Install gpg'
+  apt:
+    state: 'present'
+    update_cache: true
+    cache_valid_time: 3600
+    name:
+      - 'gpg'
+  become: true
+
 - name: 'Ensure that we are running on Debian/Ubuntu'
   fail:
     msg: "This playbook only supports Debian and Ubuntu."

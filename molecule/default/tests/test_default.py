@@ -9,4 +9,4 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 def test_xpra_is_installed(host):
     xpra = host.package("xpra")
     assert xpra.is_installed
-    assert xpra.version.startswith("7.")
+    assert xpra.version.startswith("2.")
