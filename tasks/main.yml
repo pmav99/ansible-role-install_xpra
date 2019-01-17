@@ -5,7 +5,7 @@
 - name: 'Ensure that we are running on Debian/Ubuntu'
   fail:
     msg: "This playbook only supports Debian and Ubuntu."
-  when: ansible_os_family == "Debian"
+  when: ansible_os_family != "Debian"
 
 - name: 'Add xpra GPG key'
   apt_key:
