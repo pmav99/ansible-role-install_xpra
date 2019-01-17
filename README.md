@@ -11,7 +11,7 @@ Quickstart
 ----------
 
     ansible-galaxy install pmav99.install_xpra
-    curl https://raw.githubusercontent.com/pmav99/ansible-role-install_xpra/master/sample_playbook.yml -o install_xpra.yml
+    curl https://raw.githubusercontent.com/pmav99/ansible-role-install_xpra/master/install_xpra.yml -o install_xpra.yml
     ansible-playbook install_xpra.yml --ask-become
 
 Install the role
@@ -30,10 +30,10 @@ If you want to install xpra locally you can use the following playbook:
       connection: local
       roles:
          - role: pmav99.install_xpra
-         
+
 You can also download it with:
 
-    wget https://raw.githubusercontent.com/pmav99/ansible-role-install_xpra/master/sample_playbook.yml -O playbook.yml
+    wget https://raw.githubusercontent.com/pmav99/ansible-role-install_xpra/master/install_xpra.yml -O install_xpra.yml
 
 License
 -------
