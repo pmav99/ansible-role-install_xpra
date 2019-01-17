@@ -18,6 +18,8 @@ install:
 
 
 before_script:
+  - sudo apt update
+  - sudo apt install gnupg
   # Use actual Ansible Galaxy role name for the project directory.
   - cd ../
   - ls -lah
