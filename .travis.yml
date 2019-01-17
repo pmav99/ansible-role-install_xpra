@@ -1,0 +1,31 @@
+---
+sudo: required
+language: python
+services:
+  - docker
+
+env:
+  global:
+    - ROLE_NAME: install_xpra
+    - FULL_ROLE_NAME: pmav99.install_xpra
+
+before_install:
+  - sudo apt-get -qq update
+
+install:
+  - pip install molecule
+  - pip install docker
+
+
+before_script:
+  # Use actual Ansible Galaxy role name for the project directory.
+  - cd ../
+  - ls -lah
+  - mv ansible-role-install_xpra pmav99.install_xpra
+  - cd pmav99.install_xpra
+
+script:
+  - molecule test
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

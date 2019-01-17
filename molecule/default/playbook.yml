@@ -1,0 +1,5 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: "{{ lookup('env', 'FULL_ROLE_NAME') or 'install_xpra' }}"

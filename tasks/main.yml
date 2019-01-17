@@ -1,0 +1,32 @@
+# tasks file for install xpra
+
+---
+
+- name: 'Ensure that we are running on Debian/Ubuntu'
+  fail:
+    msg: "This playbook only supports Debian and Ubuntu."
+  when: ansible_os_family == "Debian"
+
+- name: 'Add xpra GPG key'
+  apt_key:
+    url: 'https://xpra.org/gpg.asc'
+    state: 'present'
+  become: true
+
+- name: 'Add repository to /etc/apt/sources.list.d/'
+  apt_repository:
+    repo: 'deb https://xpra.org/ {{ ansible_distribution_release }} main'
+    state: 'present'
+    filename: 'xpra'
+  become: true
+
+- name: 'Install xpra'
+  apt:
+    state: 'present'
+    update_cache: true
+    cache_valid_time: 3600
+    name:
+      # xterm seems to pull a dependency that is needed by xpra too...
+      - 'xterm'
+      - 'xpra'
+  become: true
